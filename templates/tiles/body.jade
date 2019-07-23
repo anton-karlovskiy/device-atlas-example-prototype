@@ -1,0 +1,60 @@
+body
+    h1 DeviceAtlas DeviceApiWeb Example
+    if typeof api != 'undefined' || typeof api != 'null'
+        #api
+            ul
+                li
+                    label API Version:
+                    span= api.deviceApiVersion
+                li
+                    label Data Version:
+                    span= api.dataVersion
+                li
+                    label Data generation timestamp:
+                    span= api.dataCreationTimestamp
+    if errorMessage != undefined
+        h2 Errors:
+        p#error= errorMessage
+    else
+        #results
+            h2 Results (full set of detected properties):
+            div
+                if typeof allProperties != 'undefined' || typeof allProperties != 'null'
+                    table
+                        each property, name in allProperties
+                            tr
+                                td.prop-name= name
+                                td.type= property.dataType
+                                td= property.value
+                else
+                    p No results returned
+        #results
+            h2 Results (other usages):
+            div
+                table#usage
+                    if propertiesExampleUsage.isMobileDevice
+                        tr
+                            td contains(mobileDevice, true)
+                            td it's a mobileDevice
+                    else
+                        tr
+                            td contains(mobileDevice, true)
+                            td it's not a mobile device
+                    if propertiesExampleUsage.isSamsung
+                        tr
+                            td contains(vendor, Samsung)
+                            td vendor is Samsung
+                    else
+                        tr
+                            td contains(vendor, Samsung)
+                            td vendor is not Samsung
+                        tr
+                            td Property.getValue()
+                            td browserName = #{propertiesExampleUsage.browserName}
+                        tr
+                            td Property.getValue()
+                            td yearReleased = #{propertiesExampleUsage.yearReleased}
+
+                        tr
+                            td Property.getDataType()
+                            td The data type of vendor is #{propertiesExampleUsage.vendorDataType}

@@ -1,0 +1,10 @@
+{
+  "name": "serverExample",
+  "description": "Afilias DeviceAtlas device detection server",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "jade": "1.10.0"
+  },
+  "devDependencies": {}
+}
