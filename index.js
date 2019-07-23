@@ -42,7 +42,7 @@ function handleRequest(req, res) {
         res.writeHead(404);
         res.end();
     } else if (req.url === '/') {
-        renderJade(req, 'index', res);
+        renderJade(req, 'clientside', res);
     } else {
         renderJade(req, req.url, res);
     }
